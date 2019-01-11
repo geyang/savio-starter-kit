@@ -30,7 +30,7 @@ def launch():
 
 if __name__ == "__main__":
 
-    jaynes.config(verbose=True)
+    jaynes.config(verbose=False)
 
     # try below
     # jaynes.config(mode='oberyn', verbose=True)

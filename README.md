@@ -1,4 +1,4 @@
-# Savio Cluster Starter Kit (with Jaynes [![Downloads](http://pepy.tech/badge/jaynes)](http://pepy.tech/project/jaynes)) <a href="https://github.com/episodeyang/jaynes" target="_blank"><img src="figures/ETJaynes_defiant.jpg" alt="Defiant Jaynes" align="right" width="350px" style="top:20px"></a>
+# Savio Cluster Starter Kit (with Jaynes [![Downloads](http://pepy.tech/badge/jaynes)](http://pepy.tech/project/jaynes)⤵️) <a href="https://github.com/episodeyang/jaynes" target="_blank"><img src="figures/ETJaynes_defiant.jpg" alt="Defiant Jaynes" align="right" width="350px" style="top:20px"></a>
 
 <!--[![HitCount](http://hits.dwyl.io/episodeyang/savio-starter-kit.svg)](http://hits.dwyl.io/episodeyang/savio-starter-kit)-->
 
@@ -86,7 +86,7 @@ This represents the most delightful developer experience for ML job launching at
 - Sweep hyper-parameters with a simple python for-loop.
 - Easily switch between AWS, your own server via SSH, and different SLURM clusters.
 
-![jaynes-launch-screenshot](./figures/jaynes-launch-screenshot.png)
+![savio-launch-screenshot](./figures/savio-launch-screenshot.png)
 
 ### Install Jaynes (and the awesome ML-Logger)
 
@@ -148,4 +148,4 @@ import jaynes
 jaynes.run(your_python_function, *args, **keyword_args)
 ```
 
-![jaynes-launch-screenshot](./figures/jaynes-launch-screenshot.png)
+![savio-launch-screenshot](./figures/savio-launch-screenshot.png)
