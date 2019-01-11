@@ -1,0 +1,44 @@
+version: 0
+hosts:
+  berkekley: &savio
+    ip: hpc.brc.berkeley.edu
+    port: 22
+    username: geyang
+    pem: ~/.ssh/id_rsa
+run:
+  mounts:
+    - !mounts.S3Code &savio_code_mount
+      s3_prefix: s3://ge-bair/jaynes-debug
+      local_path: .
+      host_path: /global/home/users/geyang/jaynes-mounts/{NOW:%Y-%m-%d}/{NOW:%H%M%S.%f}
+      pypath: true
+      excludes: "--exclude='**/data' --exclude='**/figures' --exclude='*__pycache__' --exclude='*.git' --exclude='*.idea' --exclude='*.egg-info' --exclude='*.pkl' --exclude='*.mp4'"
+      compress: true
+  runner:
+    !runners.Slurm &lnl_slurm
+    envs: "LC_CTYPE=en_US.UTF-8 LANG=en_US.UTF-8 LANGUAGE=en_US SSH_TTY=/dev/pts/1 TERM=xterm-256color"
+    setup: |
+      module load python/3.6
+      module load glfw
+      module load tensorflow/1.10.0-py36-pip-cpu
+      # comment this line out after the first run
+      yes | pip install awscli jaynes ml-logger --user
+    startup: >-
+      pip install jaynes ml-logger --user;
+      Xvfb :0 -screen 0 1024x768x24 & echo "launched virtual display";
+      export DISPLAY=:0;
+      export LC_CTYPE=en_US.UTF-8
+    pypath: "{mounts[0].host_path}/rl:{mounts[0].host_path}/imitation:{mounts[0].host_path}/rl_maml_tf"
+    launch_directory: "{mounts[0].host_path}"
+    partition: "savio2" #savio2_gpu
+    time_limit: "0:5:0"
+    n_cpu: 24
+    n_gpu: 0
+    comment: icml
+    name: your-project
+  launch:
+    type: ssh
+    <<: *savio
+  # the problem: we need to use the correct logging files
+  launch_log: /private/home/geyang/jaynes-launch.log
+  launch_error: /private/home/geyang/jaynes-launch.err.log

@@ -1,0 +1,4 @@
+Host hpc.brc.berkeley.edu
+  ControlPath ~/.ssh/cm-%r@%h:%p
+  ControlMaster auto
+  ControlPersist 300m
