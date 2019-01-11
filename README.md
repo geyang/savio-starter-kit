@@ -5,9 +5,14 @@
 This kit contains a minimal example project for launching and monitoring
 python ML jobs on the BRC Savio cluster.
 
-## Getting Started with [./Makefile](./Makefile)
+## Preparation
 
-The Laurence National Lab Savio cluster requires 2-factor authentication (2FA) to login. 
+First get a user account, and set up your user 2FA according to the instruction 
+in the activation email.
+
+## What is this [Makefile](./Makefile)?
+
+The Berkeley Research Cluster (BRC) Savio requires 2-factor authentication (2FA) to login. 
 Because you can only use the code once every 30 seconds, if you are trying to launch
 new experiments every other 10 seconds that would not do.
 
@@ -69,36 +74,28 @@ look at the `jaynes.yml` file, and do the following:
 
 1. replace all `<your-username>` with, well, your lovely username!
 
-### What is Jaynes?
-
-`Jaynes` is an open-source tool for launching ML training jobs on heterogeneous compute platforms. It has a 
+> What is Jaynes?
+>
+> `Jaynes` is an open-source tool for launching ML training jobs on heterogeneous compute platforms. It has a 
 minimal foot-print--the only thing you need is a `jaynes.yml` config file under the root of your
 project repo, the same way `.gitconfig` is for your git repo.
-
-Jaynes allows you to launch hundreds :100: of hyper-parameter runs within seconds, all from the comfort of your IDE. 
+>
+> Jaynes allows you to launch hundreds :100: of hyper-parameter runs within seconds, all from the comfort of your IDE. 
 Because it requires no change to your code, you can run the same code locally in a debugger and as a 
 remote SLRM job.
-
-This represents the most delightful developer experience for ML job launching at the moment. 
-
-- No more stale code on your cluster servers
-- Version-controlled runs as tar-balls (supports S3 buckets)
-- Sweep hyper-parameters with a simple python for-loop.
-- Easily switch between AWS, your own server via SSH, and different SLURM clusters.
+>
+> This represents the most delightful developer experience for ML job launching at the moment. 
+>
+> - No more stale code on your cluster servers
+> - Version-controlled runs as tar-balls (supports S3 buckets)
+> - Sweep hyper-parameters with a simple python for-loop.
+> - Easily switch between AWS, your own server via SSH, and different SLURM clusters.
 
 <p align="center">
 <img src="./figures/savio-launch-screenshot.png" alt="savio-launch-screenshot" width="70%" height="70%" style="top:20px">
 </p>
 
-### Install Jaynes (and the awesome ML-Logger)
-
-Now, you can try to run the [./your-future-ICLR-best-paper/launch_entry.py](./your-future-ICLR-best-paper/launch_entry.py)
-after installing `jaynes`. Jaynes works even better when you can log everything to a single "instrumentation server"!
-This is why we also install [ML-Logger](https://github.com/episodeyang/ml_logger).
-
-```bash
-pip install jaynes ml-logger
-```
+## Preparing your environment on Savio
 
 ### Installing Packages Inside Savio (your user directory)
 
@@ -112,32 +109,30 @@ module load python/3.6
 pip install jaynes awscli ml-logger --user
 ```
 
-#### Gym and MuJoCo-py
+- **Using Gym and MuJoCo-py**
 
-For `mujoco-py` server-side rendering, you need to load the `glfw` module.
+    For `mujoco-py` server-side rendering, you need to load the `glfw` module.
 
-```bash
-module load glfw
-```
+    ```bash
+    module load glfw
+    ```
 
+- **Using PyTorch**
 
-#### PyTorch
+    The Pytorch versions you requested should soon be available (taking awhile 
+    to install). We already have pytorch/0.3.1-py3.5-cuda9.0. You can also install 
+    Python packages yourself using the --user flag with pip, such as:
+     
+    ```bash
+    module load python/3.6
+    pip install torch torchvision --user
+    ```
 
-The Pytorch versions you requested should soon be available (taking awhile 
-to install). We already have pytorch/0.3.1-py3.5-cuda9.0. You can also install 
-Python packages yourself using the --user flag with pip, such as:
- 
-```bash
-module load python/3.6
-pip install torch torchvision --user
-```
+- **Using TensorFlow**
 
-#### TensorFlow
-
-```bash
-module load tensorflow/1.10.0-py36-pip-cpu
-```
-
+    ```bash
+    module load tensorflow/1.10.0-py36-pip-cpu
+    ```
 
 ### Now Profit!!
 
@@ -147,7 +142,9 @@ this means that you can pick any python script in your code base, and run it in-
 ```python
 import jaynes
 
-jaynes.run(your_python_function, *args, **keyword_args)
+# verbose = True to show the script
+jaynes.config(verbose=True)
+jaynes.run(your_function, *args, **kwargs)
 ```
 
 <p align="center">
