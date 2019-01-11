@@ -1,4 +1,4 @@
-# Savio Cluster Starter Kit (with Jaynes [![Downloads](http://pepy.tech/badge/jaynes)](http://pepy.tech/project/jaynes)⤵️) <a href="https://github.com/episodeyang/jaynes" target="_blank"><img src="figures/ETJaynes_defiant.jpg" alt="Defiant Jaynes" align="right" width="350px" style="top:20px"></a>
+# Savio Cluster Starter Kit (with Jaynes [![Downloads](http://pepy.tech/badge/jaynes)](http://pepy.tech/project/jaynes)⤵️) <a href="https://github.com/episodeyang/jaynes" target="_blank"><img src="figures/ETJaynes_defiant.jpg" alt="Defiant Jaynes" align="right" width="120px" style="top:20px"></a>
 
 <!--[![HitCount](http://hits.dwyl.io/episodeyang/savio-starter-kit.svg)](http://hits.dwyl.io/episodeyang/savio-starter-kit)-->
 
