@@ -1,5 +1,6 @@
 # Savio Cluster Starter Kit (with Jaynes [![Downloads](http://pepy.tech/badge/jaynes)](http://pepy.tech/project/jaynes)⤵️) <a href="https://github.com/episodeyang/jaynes" target="_blank"><img src="figures/ETJaynes_defiant.jpg" alt="Defiant Jaynes" align="right" width="180px" style="top:20px"></a>
 
+[![HitCount](http://hits.dwyl.io/episodeyang/savio-starter-kit.svg)](http://hits.dwyl.io/episodeyang/savio-starter-kit)
 
 This kit contains a minimal example project for launching and monitoring
 python ML jobs on the BRC Savio cluster.
@@ -49,51 +50,6 @@ Host hpc.brc.berkeley.edu
 Now, if you do `make ssh`, the second time after the first connection (after disconnect)
 would not require 2FA. This is what we need to launch stuff on the cluster automatically.
 
-## Launching your local python codebase on Savio with [`Jayens`](https://github.com/episodeyang/jaynes)
-
-The example project we have is called [./your-future-ICLR-best-paper](your-future-ICLR-best-paper). Inside, 
-there is a `jaynes.yml` configuration file. This is the config file for your jaynes launcher. it specifies
-which package we want to upload, to which aws s3 bucket etc, and what to do once you are inside your
-host.
-
-```bash
-➜ tree your-future-ICLR-best-paper 
-
-your-future-ICLR-best-paper
-├── jaynes.yml
-└── launch_entry.py
-
-0 directories, 2 files
-```
-
-### Fill-in Your Username
-
-To launch jobs, we need to put in your username for the ssh connection. Take a 
-look at the `jaynes.yml` file, and do the following:
-
-👉 **replace all `<your-username>` with, well, your lovely username!**
-
-> What is Jaynes?
->
-> `Jaynes` is an open-source tool for launching ML training jobs on heterogeneous compute platforms. It has a 
-minimal foot-print--the only thing you need is a `jaynes.yml` config file under the root of your
-project repo, the same way `.gitconfig` is for your git repo.
->
-> Jaynes allows you to launch hundreds :100: of hyper-parameter runs within seconds, all from the comfort of your IDE. 
-Because it requires no change to your code, you can run the same code locally in a debugger and as a 
-remote SLRM job.
->
-> This represents the most delightful developer experience for ML job launching at the moment. 
->
-> - No more stale code on your cluster servers
-> - Version-controlled runs as tar-balls (supports S3 buckets)
-> - Sweep hyper-parameters with a simple python for-loop.
-> - Easily switch between AWS, your own server via SSH, and different SLURM clusters.
-
-<p align="center">
-<img src="./figures/savio-launch-screenshot.png" alt="savio-launch-screenshot" width="70%" height="70%" style="top:20px">
-</p>
-
 ## Preparing your environment on Savio
 
 ### Installing Packages Inside Savio (your user directory)
@@ -133,7 +89,31 @@ pip install jaynes awscli ml-logger --user
     module load tensorflow/1.10.0-py36-pip-cpu
     ```
 
-### Now Profit!!
+## Launching your local python codebase on Savio with [`Jayens`](https://github.com/episodeyang/jaynes)
+
+The example project we have is called [./your-future-ICLR-best-paper](your-future-ICLR-best-paper). Inside, 
+there is a `jaynes.yml` configuration file. This is the config file for your jaynes launcher. it specifies
+which package we want to upload, to which aws s3 bucket etc, and what to do once you are inside your
+host.
+
+```bash
+➜ tree your-future-ICLR-best-paper 
+
+your-future-ICLR-best-paper
+├── jaynes.yml
+└── launch_entry.py
+
+0 directories, 2 files
+```
+
+- **Fill-in Your Username**
+
+    To launch jobs, we need to put in your username for the ssh connection. Take a 
+    look at the `jaynes.yml` file, and do the following:
+
+    👉 **replace all `<your-username>` with, well, your lovely username!**
+
+### Now Profit 💸
 
 Now you can run the [launch_entry.py](./your-future-ICLR-best-paper/launch_entry.py) script. In pycharm and VS Code, 
 this means that you can pick any python script in your code base, and run it in-place by just calling:
@@ -149,3 +129,20 @@ jaynes.run(your_function, *args, **kwargs)
 <p align="center">
 <img src="./figures/savio-launch-screenshot.png" alt="savio-launch-screenshot" width="70%" height="70%" style="top:20px">
 </p>
+
+> What is Jaynes?
+>
+> `Jaynes` is an open-source tool for launching ML training jobs on heterogeneous compute platforms. It has a 
+minimal foot-print--the only thing you need is a `jaynes.yml` config file under the root of your
+project repo, the same way `.gitconfig` is for your git repo.
+>
+> Jaynes allows you to launch hundreds :100: of hyper-parameter runs within seconds, all from the comfort of your IDE. 
+Because it requires no change to your code, you can run the same code locally in a debugger and as a 
+remote SLRM job.
+>
+> This represents the most delightful developer experience for ML job launching at the moment. 
+>
+> - No more stale code on your cluster servers
+> - Version-controlled runs as tar-balls (supports S3 buckets)
+> - Sweep hyper-parameters with a simple python for-loop.
+> - Easily switch between AWS, your own server via SSH, and different SLURM clusters.
