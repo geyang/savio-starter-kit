@@ -86,7 +86,9 @@ This represents the most delightful developer experience for ML job launching at
 - Sweep hyper-parameters with a simple python for-loop.
 - Easily switch between AWS, your own server via SSH, and different SLURM clusters.
 
-![savio-launch-screenshot](./figures/savio-launch-screenshot.png)
+<p align="center">
+<img src="./figures/savio-launch-screenshot.png" alt="savio-launch-screenshot" width="70%" height="70%" style="top:20px">
+</p>
 
 ### Install Jaynes (and the awesome ML-Logger)
 
