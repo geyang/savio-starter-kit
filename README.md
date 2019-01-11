@@ -1,6 +1,5 @@
 # Savio Cluster Starter Kit (with Jaynes [![Downloads](http://pepy.tech/badge/jaynes)](http://pepy.tech/project/jaynes)⤵️) <a href="https://github.com/episodeyang/jaynes" target="_blank"><img src="figures/ETJaynes_defiant.jpg" alt="Defiant Jaynes" align="right" width="180px" style="top:20px"></a>
 
-[![HitCount](http://hits.dwyl.io/episodeyang/savio-starter-kit.svg)](http://hits.dwyl.io/episodeyang/savio-starter-kit)
 
 This kit contains a minimal example project for launching and monitoring
 python ML jobs on the BRC Savio cluster.

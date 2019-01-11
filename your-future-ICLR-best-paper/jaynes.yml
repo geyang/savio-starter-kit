@@ -3,14 +3,14 @@ hosts:
   berkekley: &savio
     ip: hpc.brc.berkeley.edu
     port: 22
-    username: geyang
+    username: <your-username>
     pem: ~/.ssh/id_rsa
 run:
   mounts:
     - !mounts.S3Code &savio_code_mount
       s3_prefix: s3://ge-bair/jaynes-debug
       local_path: .
-      host_path: /global/home/users/geyang/jaynes-mounts/{NOW:%Y-%m-%d}/{NOW:%H%M%S.%f}
+      host_path: /global/home/users/<your-username>/jaynes-mounts/{NOW:%Y-%m-%d}/{NOW:%H%M%S.%f}
       pypath: true
       excludes: "--exclude='**/data' --exclude='**/figures' --exclude='*__pycache__' --exclude='*.git' --exclude='*.idea' --exclude='*.egg-info' --exclude='*.pkl' --exclude='*.mp4'"
       compress: true
@@ -40,5 +40,5 @@ run:
     type: ssh
     <<: *savio
   # the problem: we need to use the correct logging files
-  launch_log: /private/home/geyang/jaynes-launch.log
-  launch_error: /private/home/geyang/jaynes-launch.err.log
+  launch_log: /private/home/<your-username>/jaynes-launch.log
+  launch_error: /private/home/<your-username>/jaynes-launch.err.log
