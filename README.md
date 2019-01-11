@@ -72,7 +72,7 @@ your-future-ICLR-best-paper
 To launch jobs, we need to put in your username for the ssh connection. Take a 
 look at the `jaynes.yml` file, and do the following:
 
-1. replace all `<your-username>` with, well, your lovely username!
+:right-arrow: **replace all `<your-username>` with, well, your lovely username!**
 
 > What is Jaynes?
 >
