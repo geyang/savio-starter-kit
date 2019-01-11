@@ -150,4 +150,6 @@ import jaynes
 jaynes.run(your_python_function, *args, **keyword_args)
 ```
 
-![savio-launch-screenshot](./figures/savio-launch-screenshot.png)
+<p align="center">
+<img src="./figures/savio-launch-screenshot.png" alt="savio-launch-screenshot" width="70%" height="70%" style="top:20px">
+</p>
